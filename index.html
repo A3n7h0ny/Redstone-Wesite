@@ -3,28 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
-    <link rel="stylesheet" href="style1.css">
+    <title>Redstone Health Center - Compassionate Care, Modern Excellence</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+   <link rel="stylesheet" href="style1.css">
+   
+
+   
 </head>
 <body>
-     <!-- === VIDEO SPLASH SCREEN === -->
+    <!-- === VIDEO SPLASH SCREEN === -->
     <div id="splashScreen">
         <video id="splashVideo" autoplay muted>
-            <source src="images/7583992-uhd_4096_2160_25fps.mp4" type="video/mp4">
-            <!-- Fallback if video doesn't load -->
-            <div class="video-overlay">
-                <div class="splash-logo"><img src="images/image.png" alt=""></div>
-                <h1 class="splash-title">Redstone Health Center</h1>
-                <p class="splash-subtitle">Compassionate Care, Modern Excellence</p>
-                <div class="loading-bar">
-                    <div class="loading-progress"></div>
-                </div>
-            </div>
+         <source src="images/7583992-uhd_4096_2160_25fps.mp4" type="video/mp4">
         </video>
         
         <div class="video-overlay">
-            <div class="splash-logo"><img src="images/image.png" alt=""></div>
+            <div class="splash-logo">
+                <img src="images/image.png" alt="Redstone Health Center Logo">
+            </div>
             <h1 class="splash-title">Redstone Health Center</h1>
             <p class="splash-subtitle">Compassionate Care, Modern Excellence</p>
             <div class="loading-bar">
@@ -35,59 +31,335 @@
         <button class="skip-btn" onclick="skipSplash()">Skip Intro</button>
     </div>
     
-     <nav>
-        <!-- Logo on left -->
+    <!-- === NAVIGATION === -->
+    <nav id="navbar">
         <div class="logo">
-            <a href="#"><img src="images/image.png"></a>
-            <h1 class="name">Redstone Health Center</h1>
+            <a href="#"><img src="images/image.png" alt="Redstone Health Center"></a>
+            <h1>Redstone Health Center</h1>
         </div>
 
-        <!-- Centered navigation items -->
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+
         <ul>
-            <li><a href="Home.html">Home</a></li>
-            <li><a href="Menu page.html">About</a></li>
-            <li><a href="ourshop.html">Our Services</a></li>
-            <li><a href="about.html">Doctors</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#doctors">Doctors</a></li>
         </ul>
 
-        <!-- Right side: Contact Us + Icons -->
         <div class="nav-right">
-            <!-- Contact Us -->
             <div class="contact-item">
-                <a href="contact.html">Contact Us</a>
+                <a href="#appointment">Contact Us</a>
             </div>
             
-            <!-- Icons -->
             <div class="nav-icons">
-                <!-- Dark/Light Mode Toggle -->
                 <i class="fas fa-moon theme-icon" id="themeToggle"></i>
-                
-    
-                
-                
             </div>
         </div>
     </nav>
 
-
-    <header>
+    <!-- === HEADER/HERO SECTION === -->
+    <header id="home">
         <div class="header-content">
-            <h2>
-                NOTHING COSTS MORE<br>
-                THAN HEALTH
-            </h2>
-            
-            <P>
-            Welcome to <strong>Redstone Health Center</strong>, where compassionate care meets modern medical excellence.
-            Our dedicated team of healthcare professionals is committed to providing high-quality medical services in
-            a comfortable and caring environment.
-
-            </P>
-            <a href="#"><button>Get Appointment</button></a>
-            <a href="#weekly"><button class="button-2">Learn More</button></a>
-            
+            <h2>NOTHING COSTS MORE<br>THAN HEALTH</h2>
+            <p>
+                Welcome to <strong>Redstone Health Center</strong>, where compassionate care meets modern medical excellence.
+                Our dedicated team of healthcare professionals is committed to providing high-quality medical services in
+                a comfortable and caring environment.
+            </p>
+            <div class="header-buttons">
+                <a href="#appointment" class="btn">Get Appointment</a>
+                <a href="#about" class="btn btn-outline">Learn More</a>
+            </div>
         </div>
     </header>
-    <Script src="CMjs.js"></Script>
+
+    <!-- === ABOUT SECTION === -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Redstone Health Center</h2>
+                <p>Discover our commitment to providing exceptional healthcare with compassion and expertise</p>
+            </div>
+            
+            <div class="about-container">
+                <div class="about-img">
+                    <img src="images/pexels-pixabay-263402.jpg" alt="Redstone Health Center Clinic">
+                </div>
+                
+                <div class="about-text">
+                    <p>
+                        <strong>Redstone Health Center</strong> was founded with one clear purpose — to bring compassionate,
+                        world-class healthcare closer to our community. We believe that everyone deserves access to modern medical
+                        treatment in an environment that feels safe, personal, and caring.
+                    </p>
+                    
+                    <p>
+                        Our highly trained doctors, nurses, and specialists are dedicated to ensuring that every patient receives
+                        individualized care — guided by medical expertise and genuine empathy. Whether you're visiting us for a
+                        routine check-up or a specialized treatment, we are committed to making your health and comfort our top priority.
+                    </p>
+                    
+                    <h3>Our Mission</h3>
+                    <p>
+                        To provide reliable, affordable, and compassionate healthcare services that improve the quality of life
+                        for every individual we serve.
+                    </p>
+                    
+                    <h3>Our Vision</h3>
+                    <p>
+                        To become the most trusted health center in the region — known for excellence, innovation, and care that
+                        truly makes a difference.
+                    </p>
+                    
+                    <h3>Our Values</h3>
+                    <ul class="values-list">
+                        <li><strong>Compassion:</strong> We care deeply for every patient.</li>
+                        <li><strong>Integrity:</strong> We act with honesty and transparency in all we do.</li>
+                        <li><strong>Excellence:</strong> We continuously strive to improve our services and technology.</li>
+                        <li><strong>Community:</strong> We believe in giving back and promoting wellness for all.</li>
+                    </ul>
+                    
+                    <a href="#appointment" class="btn">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SERVICES SECTION === -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Comprehensive healthcare services tailored to meet your needs</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Cardiology</h3>
+                    <p>Comprehensive heart care with state-of-the-art diagnostic tools and treatment options.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Neurology</h3>
+                    <p>Expert diagnosis and treatment for disorders of the nervous system and brain.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <h3>Pediatrics</h3>
+                    <p>Specialized medical care for infants, children, and adolescents with a gentle approach.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-bone"></i>
+                    </div>
+                    <h3>Orthopedics</h3>
+                    <p>Treatment for musculoskeletal conditions, from fractures to joint replacements.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Ophthalmology</h3>
+                    <p>Complete eye care services including vision correction and treatment of eye diseases.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-tooth"></i>
+                    </div>
+                    <h3>Dentistry</h3>
+                    <p>Comprehensive dental care for the whole family in a comfortable environment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === DOCTORS SECTION === -->
+    <section id="doctors" class="doctors-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Medical Specialists</h2>
+                <p>Meet our team of dedicated healthcare professionals</p>
+            </div>
+            
+            <div class="doctors-grid">
+                <div class="doctor-card fade-in">
+                    <img src="images/1762892450974.jpg" alt="Dr. Thando Jele" class="doctor-img">
+                    <div class="doctor-info">
+                        <h3>Dr. T Jele</h3>
+                        <p>Cardiologist</p>
+                        <span class="doctor-specialty">Heart Specialist</span>
+                        <p>15+ years of experience in cardiovascular medicine</p>
+                    </div>
+                </div>
+                
+                <div class="doctor-card fade-in">
+                    <img src="images/1762893937142.jpg" alt="Dr. Tshifiwa" class="doctor-img">
+                    <div class="doctor-info">
+                        <h3>Dr. A Bompetshi</h3>
+                        <p>Neurologist</p>
+                        <span class="doctor-specialty">Brain & Nerve Specialist</span>
+                        <p>Expert in treating complex neurological disorders</p>
+                    </div>
+                </div>
+                
+                <div class="doctor-card fade-in">
+                    <img src="images/IMG-20251111-WA0007.jpg" alt="Dr. Deborah Tshiyeya" class="doctor-img">
+                    <div class="doctor-info">
+                        <h3>Dr. D Tshiyeya</h3>
+                        <p>Pediatrician</p>
+                        <span class="doctor-specialty">Child Health Specialist</span>
+                        <p>Dedicated to providing compassionate care for children</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === APPOINTMENT SECTION === -->
+    <section id="appointment" class="appointment-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Book an Appointment</h2>
+                <p>Schedule your visit with our healthcare specialists</p>
+            </div>
+            
+            <div class="appointment-form">
+                <form id="appointmentForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="Enter your phone number" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="department">Department</label>
+                        <select id="department" required>
+                            <option value="">Select a department</option>
+                            <option value="cardiology">Cardiology</option>
+                            <option value="neurology">Neurology</option>
+                            <option value="pediatrics">Pediatrics</option>
+                            <option value="orthopedics">Orthopedics</option>
+                            <option value="ophthalmology">Ophthalmology</option>
+                            <option value="dentistry">Dentistry</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="doctor">Preferred Doctor</label>
+                        <select id="doctor">
+                            <option value="">Any available doctor</option>
+                            <option value="dr-johnson">Dr. Sarah Johnson</option>
+                            <option value="dr-chen">Dr. Michael Chen</option>
+                            <option value="dr-rodriguez">Dr. Emily Rodriguez</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Additional Message</label>
+                        <textarea id="message" placeholder="Any specific concerns or requests"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Book Appointment</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- === FOOTER === -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Redstone Health Center</h3>
+                    <p>Compassionate Care, Modern Excellence. We are committed to providing high-quality healthcare services to our community.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#doctors">Our Doctors</a></li>
+                        <li><a href="#appointment">Book Appointment</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Cardiology</a></li>
+                        <li><a href="#">Neurology</a></li>
+                        <li><a href="#">Pediatrics</a></li>
+                        <li><a href="#">Orthopedics</a></li>
+                        <li><a href="#">Dentistry</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Healthcare Ave, Medical District, City 12345</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>(011) 123-4567</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@redstonehealth.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon - Fri: 8:00 AM - 8:00 PM<br>Sat - Sun: 9:00 AM - 5:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Redstone Health Center. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+   <script src="CMjs.js"></script>
 </body>
 </html>

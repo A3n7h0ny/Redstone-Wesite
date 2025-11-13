@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APS Score Qualification Checker</title>
+  <link rel="stylesheet" href="testCSS.css">
+  
+</head>
+<body>
+  <div class="container">
+    <h1> APS Score Checker</h1>
+    <div class="marks">
+        <p>Enter Your subject marks:</p>
+    <input type="number" id="Mark1" placeholder="Enter mark">
+    <br>
+    <div class="marks">
+    <input type="number" id="Mark2" placeholder="Enter mark">
+    <br>
+    <div class="marks">
+    <input type="number" id="Mark3" placeholder="Enter mark">
+    <br>
+    <div class="marks">
+    <input type="number" id="Mark4" placeholder="Enter mark">
+    <br>
+    <div class="marks">
+    <input type="number" id="Mark5" placeholder="Enter mark">
+    <br>
+    <div class="marks">
+    <input type="number" id="Mark6" placeholder="Enter mark">
+    <br>
+    </div>
+
+
+    <button onclick="checkQualification()">Check Qualification</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function checkQualification() {
+     const mark = [ document.getElementById('Mark1').value,
+      document.getElementById('Mark2').value,
+      document.getElementById('Mark3').value,
+      document.getElementById('Mark4').value,
+      document.getElementById('Mark5').value,
+      document.getElementById('Mark6').value];
+
+      const result = document.getElementById('result');
+
+      if (mark.some(m => isNaN(m) || m === 0)) {
+        result.textContent = " Please enter all your marks.";
+        result.style.color = "#ffb347";
+        return;
+      }
+
+            // Calculate APS (simple method: total / 10)
+      const total = mark.reduce((sum, m) => sum + m, 0);
+      const aps = Math.round(total / 10);
+
+      // Display APS and qualification message
+      result.innerHTML = `Your APS score is <strong>${aps}</strong><br>`;
+
+      if (aps < 25) {
+        result.innerHTML += " Sorry, you do not qualify for university.";
+        result.style.color = "#ff4b5c";
+      } else {
+        result.innerHTML += " Congratulations! You qualify for university!";
+        result.style.color = "#00ff99";
+      }
+
+
+    
+    }
+  </script>
+</body>
+</html>

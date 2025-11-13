@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Redstone Health Center - Compassionate Care, Modern Excellence</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <style>
+        /* === GLOBAL STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #007997;
+            --primary-light: #4da6bf;
+            --primary-dark: #005a70;
+            --secondary: #5cb85c;
+            --accent: #ff914d;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #6c757d;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button, .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        button:hover, .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 121, 151, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background-color: #4cae4c;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* === NAVIGATION === */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            padding: 15px 5%;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            border-radius: 50%;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: var(--dark);
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-item {
+            margin-right: 20px;
+        }
+
+        .contact-item a {
+            background-color: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .contact-item a:hover {
+            background-color: #4cae4c;
+            transform: translateY(-2px);
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .theme-icon {
+            font-size: 1.2rem;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-icon:hover {
+            color: var(--primary);
+            transform: rotate(30deg);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* === HERO SECTION === */
+        .about-hero {
+            background: linear-gradient(135deg, rgba(0, 121, 151, 0.9) 0%, rgba(0, 90, 112, 0.8) 100%), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1153&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .about-hero-content {
+            max-width: 800px;
+            margin-left: 10%;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .about-hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .about-hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* === ABOUT SECTION === */
+        .about-section {
+            background-color: var(--light);
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-img:hover img {
+            transform: scale(1.03);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .values-list {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .values-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .values-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* === GALLERY SECTION === */
+        .gallery-section {
+            background-color: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* === FACILITIES SECTION === */
+        .facilities-section {
+            background-color: var(--light);
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .facility-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .facility-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(0, 121, 151, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .facility-icon i {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .facility-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .facility-card p {
+            color: var(--text-light);
+        }
+
+        /* === APP SECTION === */
+        .app-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .app-section .section-title h2 {
+            color: white;
+        }
+
+        .app-section .section-title h2:after {
+            background-color: var(--accent);
+        }
+
+        .app-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .app-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .app-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .app-features {
+            flex: 1;
+            text-align: left;
+        }
+
+        .app-features h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .feature-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .feature-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .app-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .app-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .app-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .app-btn i {
+            font-size: 1.5rem;
+        }
+
+        .app-btn-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .app-btn-text span:first-child {
+            font-size: 0.8rem;
+        }
+
+        .app-btn-text span:last-child {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        /* === TEAM SECTION === */
+        .team-section {
+            background-color: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .team-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .team-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .team-info p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .team-specialty {
+            display: inline-block;
+            background-color: rgba(0, 121, 151, 0.1);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 70px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .footer-column p {
+            margin-bottom: 20px;
+            color: #bbb;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === RESPONSIVE STYLES === */
+        @media (max-width: 992px) {
+            .about-hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .about-container, .app-container {
+                flex-direction: column;
+            }
+
+            .about-img, .about-text, .app-image, .app-features {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-right {
+                display: none;
+            }
+
+            .about-hero-content {
+                margin: 0 5%;
+                text-align: center;
+            }
+
+            .about-hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .app-buttons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .about-hero-content h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .facility-card, .team-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- === NAVIGATION === -->
+    <nav id="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="images/image.png" ></a>
+            <h1>Redstone Health Center</h1>
+        </div>
+
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="doctors.html">Doctors</a></li>
+
+        </ul>
+
+        <div class="nav-right">
+            <div class="contact-item">
+                <a href="contact.html">Contact Us</a>
+            </div>
+            
+            <div class="nav-icons">
+                <i class="fas fa-moon theme-icon" id="themeToggle"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- === HERO SECTION === -->
+    <section class="about-hero">
+        <div class="about-hero-content">
+            <h1>About Redstone Health Center</h1>
+            <p>Discover our commitment to providing exceptional healthcare with compassion and expertise. Learn about our facilities, team, and innovative approach to patient care.</p>
+            <a href="#gallery" class="btn">View Our Facilities</a>
+        </div>
+    </section>
+
+    <!-- === ABOUT SECTION === -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Story</h2>
+                <p>Committed to excellence in healthcare since our founding</p>
+            </div>
+            
+            <div class="about-container">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80" alt="Redstone Health Center Clinic">
+                </div>
+                
+                <div class="about-text">
+                    <h2>Compassionate Care Since 2005</h2>
+                    <p>
+                        <strong>Redstone Health Center</strong> was founded with one clear purpose — to bring compassionate,
+                        world-class healthcare closer to our community. We believe that everyone deserves access to modern medical
+                        treatment in an environment that feels safe, personal, and caring.
+                    </p>
+                    
+                    <p>
+                        Our highly trained doctors, nurses, and specialists are dedicated to ensuring that every patient receives
+                        individualized care — guided by medical expertise and genuine empathy. Whether you're visiting us for a
+                        routine check-up or a specialized treatment, we are committed to making your health and comfort our top priority.
+                    </p>
+                    
+                    <h3>Our Mission</h3>
+                    <p>
+                        To provide reliable, affordable, and compassionate healthcare services that improve the quality of life
+                        for every individual we serve.
+                    </p>
+                    
+                    <h3>Our Vision</h3>
+                    <p>
+                        To become the most trusted health center in the region — known for excellence, innovation, and care that
+                        truly makes a difference.
+                    </p>
+                    
+                    <h3>Our Values</h3>
+                    <ul class="values-list">
+                        <li><strong>Compassion:</strong> We care deeply for every patient.</li>
+                        <li><strong>Integrity:</strong> We act with honesty and transparency in all we do.</li>
+                        <li><strong>Excellence:</strong> We continuously strive to improve our services and technology.</li>
+                        <li><strong>Community:</strong> We believe in giving back and promoting wellness for all.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === GALLERY SECTION === -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Facilities</h2>
+                <p>Take a virtual tour of our state-of-the-art medical center</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1516549655669-dfbf54c8a963?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Reception Area">
+                    <div class="gallery-overlay">
+                        <h3>Welcoming Reception</h3>
+                        <p>Our comfortable reception area designed to make patients feel at ease</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80" alt="Examination Room">
+                    <div class="gallery-overlay">
+                        <h3>Modern Examination Rooms</h3>
+                        <p>Fully equipped examination rooms with the latest medical technology</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1173&q=80" alt="Laboratory">
+                    <div class="gallery-overlay">
+                        <h3>Advanced Laboratory</h3>
+                        <p>State-of-the-art laboratory for accurate and timely diagnostic testing</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1584467735871-8db9ac8d0286?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Waiting Area">
+                    <div class="gallery-overlay">
+                        <h3>Comfortable Waiting Areas</h3>
+                        <p>Spacious and comfortable waiting areas for patients and families</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80" alt="Pharmacy">
+                    <div class="gallery-overlay">
+                        <h3>In-House Pharmacy</h3>
+                        <p>Convenient pharmacy services for all your medication needs</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Surgical Suite">
+                    <div class="gallery-overlay">
+                        <h3>Advanced Surgical Suite</h3>
+                        <p>Modern surgical facilities for a wide range of procedures</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === FACILITIES SECTION === -->
+    <section class="facilities-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Amenities</h2>
+                <p>Designed with patient comfort and convenience in mind</p>
+            </div>
+            
+            <div class="facilities-grid">
+                <div class="facility-card fade-in">
+                    <div class="facility-icon">
+                        <i class="fas fa-parking"></i>
+                    </div>
+                    <h3>Free Parking</h3>
+                    <p>Ample parking space available for all patients and visitors</p>
+                </div>
+                
+                <div class="facility-card fade-in">
+                    <div class="facility-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>Free Wi-Fi</h3>
+                    <p>Complimentary high-speed internet access throughout our facility</p>
+                </div>
+                
+                <div class="facility-card fade-in">
+                    <div class="facility-icon">
+                        <i class="fas fa-wheelchair"></i>
+                    </div>
+                    <h3>Accessibility</h3>
+                    <p>Fully accessible facilities for patients with mobility challenges</p>
+                </div>
+                
+                <div class="facility-card fade-in">
+                    <div class="facility-icon">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <h3>Comfort Lounge</h3>
+                    <p>Relaxing waiting areas with complimentary beverages</p>
+                </div>
+                
+                <div class="facility-card fade-in">
+                    <div class="facility-icon">
+                        <i class="fas fa-tablet-alt"></i>
+                    </div>
+                    <h3>Digital Check-in</h3>
+                    <p>Streamlined digital registration and check-in process</p>
+                </div>
+                
+                <div class="facility-card fade-in">
+                    <div class="facility-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3>Childcare</h3>
+                    <p>Supervised play area for children while parents receive care</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === APP SECTION === -->
+    <section class="app-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Redstone Health App</h2>
+                <p>Manage your healthcare needs with our convenient mobile application</p>
+            </div>
+            
+            <div class="app-container">
+                <div class="app-image">
+                    <img src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Redstone Health App">
+                </div>
+                
+                <div class="app-features">
+                    <h3>Healthcare at Your Fingertips</h3>
+                    <p>Our mobile application puts you in control of your healthcare journey with convenient features designed to save you time and provide peace of mind.</p>
+                    
+                    <ul class="feature-list">
+                        <li>Book and manage appointments with ease</li>
+                        <li>Access your medical records and test results</li>
+                        <li>Secure messaging with your healthcare providers</li>
+                        <li>Receive medication reminders and refill prescriptions</li>
+                        <li>Virtual consultation options for follow-up visits</li>
+                        <li>Health tracking and wellness resources</li>
+                    </ul>
+                    
+                    <div class="app-buttons">
+                        <a href="#" class="app-btn">
+                            <i class="fab fa-apple"></i>
+                            <div class="app-btn-text">
+                                <span>Download on the</span>
+                                <span>App Store</span>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="app-btn">
+                            <i class="fab fa-google-play"></i>
+                            <div class="app-btn-text">
+                                <span>Get it on</span>
+                                <span>Google Play</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === TEAM SECTION === -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Leadership Team</h2>
+                <p>Meet the dedicated professionals leading our healthcare center</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Dr. Sarah Johnson" class="team-img">
+                    <div class="team-info">
+                        <h3>Dr. Sarah Johnson</h3>
+                        <p>Medical Director</p>
+                        <span class="team-specialty">Internal Medicine</span>
+                        <p>20+ years of experience in healthcare leadership and patient care</p>
+                    </div>
+                </div>
+                
+                <div class="team-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Dr. Michael Chen" class="team-img">
+                    <div class="team-info">
+                        <h3>Dr. Michael Chen</h3>
+                        <p>Chief of Surgery</p>
+                        <span class="team-specialty">General Surgery</span>
+                        <p>Specializes in minimally invasive procedures with 15+ years experience</p>
+                    </div>
+                </div>
+                
+                <div class="team-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1594824947933-d0501ba2fe65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80" alt="Dr. Emily Rodriguez" class="team-img">
+                    <div class="team-info">
+                        <h3>Dr. Emily Rodriguez</h3>
+                        <p>Head of Pediatrics</p>
+                        <span class="team-specialty">Pediatric Care</span>
+                        <p>Dedicated to providing compassionate care for children of all ages</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === FOOTER === -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Redstone Health Center</h3>
+                    <p>Compassionate Care, Modern Excellence. We are committed to providing high-quality healthcare services to our community.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="doctors.html">Our Doctors</a></li>
+                        <li><a href="contact.html">Book Appointment</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Primary Care</a></li>
+                        <li><a href="#">Specialty Care</a></li>
+                        <li><a href="#">Emergency Services</a></li>
+                        <li><a href="#">Diagnostic Imaging</a></li>
+                        <li><a href="#">Preventive Care</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Healthcare Ave, Medical District, City 12345</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>(555) 123-4567</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@redstonehealth.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon - Fri: 8:00 AM - 8:00 PM<br>Sat - Sun: 9:00 AM - 5:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Redstone Health Center. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // === NAVIGATION SCROLL EFFECT ===
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // === MOBILE MENU TOGGLE ===
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('nav ul');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            // Change icon
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // === DARK/LIGHT MODE TOGGLE ===
+        const themeToggle = document.getElementById('themeToggle');
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            // Change icon based on mode
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggle.classList.remove('fa-moon');
+                themeToggle.classList.add('fa-sun');
+            } else {
+                themeToggle.classList.remove('fa-sun');
+                themeToggle.classList.add('fa-moon');
+            }
+        });
+
+        // Add dark mode styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .dark-mode {
+                background-color: #1a1a1a;
+                color: #e0e0e0;
+            }
+            
+            .dark-mode nav {
+                background-color: rgba(30, 30, 30, 0.95);
+            }
+            
+            .dark-mode .about-section,
+            .dark-mode .facilities-section {
+                background-color: #2d2d2d;
+            }
+            
+            .dark-mode .facility-card,
+            .dark-mode .team-card {
+                background-color: #3d3d3d;
+                color: #e0e0e0;
+            }
+            
+            .dark-mode .section-title p,
+            .dark-mode .facility-card p,
+            .dark-mode .team-info p {
+                color: #b0b0b0;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // === SCROLL ANIMATIONS ===
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        function checkFade() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkFade);
+        window.addEventListener('load', checkFade);
+    </script>
+</body>
+</html>
