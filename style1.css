@@ -1,0 +1,397 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 5px;
+    width: 100%;
+    justify-content: space-between;
+    
+
+  }
+  nav ul li img {
+    
+    width: 20px;
+    cursor: pointer;
+    padding: 0px;
+    transition: 0.3s;
+  }
+  nav ul li img:hover {
+    color: blue;
+  }
+  nav ul li a:hover {
+    color: black;
+
+  }
+  nav ul li a:active {
+    color: beige;
+  }
+  
+  nav .logo {
+    background-color: #00799700;
+    color: white;
+    padding: 0px;
+    border-radius: 20px;
+  }
+  nav {
+    background-color: #00799700;
+    color: white;
+    padding: 0px;
+    border-radius: 15px;
+  }
+  nav ul {
+    list-style-type: none;
+    display: flex;
+     align-items: center;
+    margin: 0;
+    padding: 0;
+    /* This will center the main nav items */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  nav ul li {
+    margin: 0 1rem;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 20px;
+     transition: 0.3s;
+  }
+.logo .name {
+    width: 450px;
+    font-size: 5vmin;
+    padding: 16px 0 16px 0px;
+    margin: 0px;
+}
+  .logo img {
+    float: left;
+    display: block;
+    width: 55px;
+    border-radius: 70px;
+    padding: 7px;
+    grid-template-columns:1fr 100px 0px;
+    
+
+  }
+  /* Right side container for Contact + Icons */
+.nav-right {
+    background-color: #007997;
+    border-radius: 30px;
+    padding: 5px;
+    display: flex;
+    margin: 20px;
+    align-items: center;
+    margin-left: auto; /* Push to far right */
+}
+/* Contact Us link styling */
+.contact-item {
+    margin-right: 15px;
+   
+}
+.contact-item a{
+ color: white;
+    text-decoration: none;
+     padding: 10px;
+    font-size: 20px;
+     transition: 0.3s;
+      background-color: #5cb85c;
+    border-radius: 30px;
+
+}
+
+/* Icons container */
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between icons */
+    margin-right: 20px;
+   
+}
+/* Icon styling */
+.theme-icon, .other-icon {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.theme-icon:hover, .other-icon:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+  body , html {
+    overflow-x: hidden;
+}
+  
+  
+
+body header {
+    background:linear-gradient(90deg,#007997,#0079975e), url(images/pexels-karola-g-5206940.jpg);
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    scroll-behavior: smooth;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    
+
+}
+.header-content {
+    color: white;
+    text-align: left;
+    margin-left: 50px;
+    width: 800px;
+}
+.header-content h2 {
+    font-family: freeman;
+    margin-top: 170px;
+    font-size: 10vmin;
+    margin-bottom: 5px;
+    
+}
+
+.line {
+    width: 150px;
+    height: 4px;
+    background:  rgb(180, 105, 8);
+    border-radius: 5px;
+    margin: 10px auto;
+}
+.header-content p {
+    font-size: 3vmin;
+    text-align: justify;
+    margin-top: 3px;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+span {
+  color:  rgb(180, 105, 8);
+}
+.ctn {
+  margin-top: 3px;
+  background-color: rgb(180, 105, 8);
+  padding: 5px;
+  padding-right: 8px;
+  padding-left: 8px;
+  color: beige;
+  border-radius: 5px;
+  font-family: 'Times New Roman', Times, serif;
+}
+    
+
+button {
+    background-color: rgb(255, 255, 255);
+    color: #007997;
+    border-radius: 5px;
+    border-style: solid;
+    border-color:  rgb(255, 255, 255);
+    font-weight: bold;
+    padding: 12px;
+    padding-left: 50px;
+    padding-right: 50px;
+    transition: 0,1s;
+    cursor: pointer;
+    transition: .2s;
+    
+}
+button:hover {
+    background: transparent;
+    color: white;
+    border-color: white;
+    transition: .2s;
+}
+button:active {
+    border-color: #007997;
+    color: #007997;
+    transition: .2s;
+}
+.button-2 {
+    margin-left: 15px;
+    background-color: transparent;
+    border-radius: 5px;
+    color: white;
+    border-style: solid;
+    border-color:  white;
+    font-weight: bold;
+    padding-left: 50px;
+    padding: 12px 50px ;
+    transition: 0,1s;
+    cursor: pointer;
+    transition: .2s;  
+}
+.button-2:hover {
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-color:  rgb(255, 255, 255);
+    color: #007997;
+    transition: .2s;
+}
+.button-2:active {
+    background-color: transparent;
+    border-color: rgb(180, 105, 8);
+    color: rgb(180, 105, 8);
+    transition: .2s;
+}
+
+/*--specials--*/
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  width: 80%;
+  margin: 80px auto;
+}
+.specials h2 {
+  text-align: center;
+  font-size: 7vmin;
+  margin-bottom: 5px;
+}
+.row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+.row .col img {
+  display: flex;
+  width: 406px;
+  height: 300px;
+  border-radius: 10px;
+}
+.row .col img:hover {
+  width: 410px;
+  height: 304px;
+  border-radius: 18px;
+}
+.spd .row {
+  margin-top: 50px;
+}
+.row .col {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+ /* === SPLASH SCREEN STYLES === */
+        #splashScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #007997; /* Your brand color */
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #splashVideo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 121, 151, 0.3); /* Semi-transparent overlay */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .splash-logo {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        
+        .splash-title {
+            font-size: 3em;
+            font-family: 'Freeman', sans-serif;
+            margin-bottom: 10px;
+        }
+        
+        .splash-subtitle {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+        
+        .skip-btn {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        
+        .skip-btn:hover {
+            background: white;
+            color: #007997;
+        }
+        
+        .loading-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            margin-top: 20px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .loading-progress {
+            width: 0%;
+            height: 100%;
+            background: white;
+            animation: loading 5s ease-in-out forwards;
+        }
+        
+        @keyframes loading {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        
+        .fade-out {
+            animation: fadeOut 0.8s ease-in-out forwards;
+        }
+        
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+        .splash-logo img {
+            width: 300px;
+        }

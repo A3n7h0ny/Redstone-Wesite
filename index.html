@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+     <!-- === VIDEO SPLASH SCREEN === -->
+    <div id="splashScreen">
+        <video id="splashVideo" autoplay muted>
+            <source src="images/7583992-uhd_4096_2160_25fps.mp4" type="video/mp4">
+            <!-- Fallback if video doesn't load -->
+            <div class="video-overlay">
+                <div class="splash-logo"><img src="images/image.png" alt=""></div>
+                <h1 class="splash-title">Redstone Health Center</h1>
+                <p class="splash-subtitle">Compassionate Care, Modern Excellence</p>
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
+            </div>
+        </video>
+        
+        <div class="video-overlay">
+            <div class="splash-logo"><img src="images/image.png" alt=""></div>
+            <h1 class="splash-title">Redstone Health Center</h1>
+            <p class="splash-subtitle">Compassionate Care, Modern Excellence</p>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+        
+        <button class="skip-btn" onclick="skipSplash()">Skip Intro</button>
+    </div>
+    
+     <nav>
+        <!-- Logo on left -->
+        <div class="logo">
+            <a href="#"><img src="images/image.png"></a>
+            <h1 class="name">Redstone Health Center</h1>
+        </div>
+
+        <!-- Centered navigation items -->
+        <ul>
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="Menu page.html">About</a></li>
+            <li><a href="ourshop.html">Our Services</a></li>
+            <li><a href="about.html">Doctors</a></li>
+        </ul>
+
+        <!-- Right side: Contact Us + Icons -->
+        <div class="nav-right">
+            <!-- Contact Us -->
+            <div class="contact-item">
+                <a href="contact.html">Contact Us</a>
+            </div>
+            
+            <!-- Icons -->
+            <div class="nav-icons">
+                <!-- Dark/Light Mode Toggle -->
+                <i class="fas fa-moon theme-icon" id="themeToggle"></i>
+                
+    
+                
+                
+            </div>
+        </div>
+    </nav>
+
+
+    <header>
+        <div class="header-content">
+            <h2>
+                NOTHING COSTS MORE<br>
+                THAN HEALTH
+            </h2>
+            
+            <P>
+            Welcome to <strong>Redstone Health Center</strong>, where compassionate care meets modern medical excellence.
+            Our dedicated team of healthcare professionals is committed to providing high-quality medical services in
+            a comfortable and caring environment.
+
+            </P>
+            <a href="#"><button>Get Appointment</button></a>
+            <a href="#weekly"><button class="button-2">Learn More</button></a>
+            
+        </div>
+    </header>
+    <Script src="CMjs.js"></Script>
+</body>
+</html>
