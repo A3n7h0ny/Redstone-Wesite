@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neurology Department - Redstone Health Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <style>
+        /* === GLOBAL STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #007997;
+            --primary-light: #4da6bf;
+            --primary-dark: #005a70;
+            --secondary: #5cb85c;
+            --accent: #ff914d;
+            --neuro-purple: #8e44ad;
+            --neuro-light: #f4ecf7;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #6c757d;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button, .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        button:hover, .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 121, 151, 0.3);
+        }
+
+        .btn-neuro {
+            background-color: var(--neuro-purple);
+        }
+
+        .btn-neuro:hover {
+            background-color: #7d3c98;
+            box-shadow: 0 7px 15px rgba(142, 68, 173, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background-color: #4cae4c;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .neuro-title h2 {
+            color: var(--neuro-purple);
+        }
+
+        .neuro-title h2:after {
+            background-color: var(--neuro-purple);
+        }
+
+        /* === NAVIGATION === */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            padding: 15px 5%;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            border-radius: 50%;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: var(--dark);
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-item {
+            margin-right: 20px;
+        }
+
+        .contact-item a {
+            background-color: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .contact-item a:hover {
+            background-color: #4cae4c;
+            transform: translateY(-2px);
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .theme-icon {
+            font-size: 1.2rem;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-icon:hover {
+            color: var(--primary);
+            transform: rotate(30deg);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* === HERO SECTION === */
+        .neuro-hero {
+            background: linear-gradient(135deg, rgba(142, 68, 173, 0.9) 0%, rgba(125, 60, 152, 0.8) 100%), url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .neuro-hero-content {
+            max-width: 800px;
+            margin-left: 10%;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .neuro-hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .neuro-hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* === ABOUT NEUROLOGY SECTION === */
+        .neuro-about {
+            background-color: var(--neuro-light);
+        }
+
+        .neuro-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .neuro-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .neuro-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .neuro-img:hover img {
+            transform: scale(1.03);
+        }
+
+        .neuro-text {
+            flex: 1;
+        }
+
+        .neuro-text h2 {
+            color: var(--neuro-purple);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .neuro-text p {
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .expertise-list {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .expertise-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .expertise-list li:before {
+            content: '🧠';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* === SERVICES SECTION === */
+        .neuro-services {
+            background-color: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border-top: 4px solid var(--neuro-purple);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(142, 68, 173, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .service-icon i {
+            font-size: 1.8rem;
+            color: var(--neuro-purple);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--neuro-purple);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+        }
+
+        /* === CONDITIONS SECTION === */
+        .conditions-section {
+            background-color: var(--light);
+        }
+
+        .conditions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .condition-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .condition-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .condition-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--neuro-purple);
+        }
+
+        .condition-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--neuro-purple);
+        }
+
+        .condition-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* === DOCTORS SECTION === */
+        .neuro-doctors {
+            background-color: var(--white);
+        }
+
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .doctor-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .doctor-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .doctor-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .doctor-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--neuro-purple);
+        }
+
+        .doctor-info p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .doctor-specialty {
+            display: inline-block;
+            background-color: rgba(142, 68, 173, 0.1);
+            color: var(--neuro-purple);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            border: 1px solid rgba(142, 68, 173, 0.2);
+        }
+
+        /* === TECHNOLOGY SECTION === */
+        .technology-section {
+            background-color: var(--neuro-light);
+        }
+
+        .tech-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .tech-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .tech-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .tech-features {
+            flex: 1;
+        }
+
+        .tech-features h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--neuro-purple);
+        }
+
+        .tech-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .tech-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .tech-list li:before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+        }
+
+        /* === APPOINTMENT SECTION === */
+        .neuro-appointment {
+            background: linear-gradient(135deg, var(--neuro-purple) 0%, #7d3c98 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .neuro-appointment .section-title h2 {
+            color: white;
+        }
+
+        .neuro-appointment .section-title h2:after {
+            background-color: var(--accent);
+        }
+
+        .neuro-appointment p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+        }
+
+        .appointment-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .appointment-option {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .appointment-option:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .option-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .appointment-option h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .appointment-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .appointment-form .btn {
+            background-color: var(--accent);
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .appointment-form .btn:hover {
+            background-color: #e67e22;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 70px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .footer-column p {
+            margin-bottom: 20px;
+            color: #bbb;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === RESPONSIVE STYLES === */
+        @media (max-width: 992px) {
+            .neuro-hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .neuro-container, .tech-container {
+                flex-direction: column;
+            }
+
+            .neuro-img, .neuro-text, .tech-image, .tech-features {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-right {
+                display: none;
+            }
+
+            .neuro-hero-content {
+                margin: 0 5%;
+                text-align: center;
+            }
+
+            .neuro-hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .appointment-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .neuro-hero-content h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .service-card, .doctor-card, .condition-card {
+                padding: 20px;
+            }
+
+            .appointment-form {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+      <!-- === NAVIGATION === -->
+    <nav id="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="images/image.png" ></a>
+            <h1>Redstone Health Center</h1>
+        </div>
+
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#about" class="active">About</a></li>
+            <li><a href="#gallery">Facilities</a></li>
+            <li><a href="#View-Team">Doctors</a></li>
+
+        </ul>
+
+        <div class="nav-right">
+            <div class="contact-item">
+                <a href="contact.html">Contact Us</a>
+            </div>
+            
+            <div class="nav-icons">
+                <i class="fas fa-moon theme-icon" id="themeToggle"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- === HERO SECTION === -->
+    <section class="neuro-hero">
+        <div class="neuro-hero-content">
+            <h1>Neurology Department</h1>
+            <p>Expert care for brain, spine, and nervous system disorders. Our neurology team combines advanced technology with compassionate care to diagnose and treat complex neurological conditions.</p>
+            <div class="hero-buttons">
+                <a href="#appointment" class="btn btn-neuro"><i class="fas fa-brain"></i> Schedule Consultation</a>
+                <a href="#services" class="btn btn-outline">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- === ABOUT NEUROLOGY SECTION === -->
+    <section id="about" class="neuro-about">
+        <div class="container">
+            <div class="section-title neuro-title">
+                <h2>Comprehensive Neurological Care</h2>
+                <p>Advanced diagnosis and treatment for disorders of the nervous system</p>
+            </div>
+            
+            <div class="neuro-container">
+                <div class="neuro-img">
+                    <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Neurology Department">
+                </div>
+                
+                <div class="neuro-text">
+                    <h2>Expert Care for Your Nervous System</h2>
+                    <p>
+                        The Neurology Department at Redstone Health Center provides comprehensive, 
+                        patient-centered care for disorders affecting the brain, spinal cord, nerves, and muscles. 
+                        Our team of board-certified neurologists and neuroscience specialists utilize the latest 
+                        advancements in neurological medicine to deliver precise diagnoses and effective treatments.
+                    </p>
+                    
+                    <p>
+                        We understand that neurological conditions can be complex and life-altering, which is why 
+                        we take a multidisciplinary approach to care, collaborating with neurosurgeons, physical 
+                        therapists, and other specialists to develop personalized treatment plans for each patient.
+                    </p>
+                    
+                    <h3>Our Specialized Expertise</h3>
+                    <ul class="expertise-list">
+                        <li>Stroke and Cerebrovascular Disease Management</li>
+                        <li>Epilepsy and Seizure Disorders</li>
+                        <li>Movement Disorders including Parkinson's Disease</li>
+                        <li>Multiple Sclerosis and Neuroimmunology</li>
+                        <li>Headache and Migraine Treatment</li>
+                        <li>Neuromuscular Disorders and Neuropathy</li>
+                    </ul>
+                    
+                    <a href="#doctors" class="btn btn-neuro">Meet Our Neurologists</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SERVICES SECTION === -->
+    <section id="services" class="neuro-services">
+        <div class="container">
+            <div class="section-title neuro-title">
+                <h2>Neurology Services</h2>
+                <p>Comprehensive care for all neurological conditions</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Stroke Care</h3>
+                    <p>Comprehensive stroke prevention, acute treatment, and rehabilitation programs with 24/7 neurovascular coverage.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-head-side-vibration"></i>
+                    </div>
+                    <h3>Epilepsy Management</h3>
+                    <p>Advanced diagnosis and treatment for seizure disorders including video EEG monitoring and medication management.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-walking"></i>
+                    </div>
+                    <h3>Movement Disorders</h3>
+                    <p>Specialized care for Parkinson's disease, tremors, dystonia, and other movement disorders with advanced therapies.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h3>Multiple Sclerosis Center</h3>
+                    <p>Comprehensive care for MS patients including immunotherapy, symptom management, and rehabilitation services.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-headache"></i>
+                    </div>
+                    <h3>Headache & Migraine</h3>
+                    <p>Specialized treatment for chronic headaches and migraines including Botox therapy and nerve blocks.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-procedures"></i>
+                    </div>
+                    <h3>Neuromuscular Program</h3>
+                    <p>Diagnosis and treatment for muscle and nerve disorders including EMG testing and infusion therapies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === CONDITIONS SECTION === -->
+    <section class="conditions-section">
+        <div class="container">
+            <div class="section-title neuro-title">
+                <h2>Conditions We Treat</h2>
+                <p>Expert care for a wide range of neurological disorders</p>
+            </div>
+            
+            <div class="conditions-grid">
+                <div class="condition-card fade-in">
+                    <div class="condition-icon">🧠</div>
+                    <h3>Stroke</h3>
+                    <p>Ischemic and hemorrhagic stroke prevention, treatment, and recovery programs</p>
+                </div>
+                
+                <div class="condition-card fade-in">
+                    <div class="condition-icon">⚡</div>
+                    <h3>Epilepsy</h3>
+                    <p>Seizure disorder diagnosis, medication management, and surgical evaluation</p>
+                </div>
+                
+                <div class="condition-card fade-in">
+                    <div class="condition-icon">🔄</div>
+                    <h3>Parkinson's Disease</h3>
+                    <p>Comprehensive care including medication management and deep brain stimulation</p>
+                </div>
+                
+                <div class="condition-card fade-in">
+                    <div class="condition-icon">🌀</div>
+                    <h3>Multiple Sclerosis</h3>
+                    <p>Disease-modifying therapies and symptom management for MS patients</p>
+                </div>
+                
+                <div class="condition-card fade-in">
+                    <div class="condition-icon">🤕</div>
+                    <h3>Migraines</h3>
+                    <p>Chronic and acute migraine treatment including preventive and abortive therapies</p>
+                </div>
+                
+                <div class="condition-card fade-in">
+                    <div class="condition-icon">🦵</div>
+                    <h3>Neuropathy</h3>
+                    <p>Peripheral nerve damage treatment including diabetic and chemotherapy-induced neuropathy</p>
+                </div>
+                
+                <div class="condition-card fade-in">
+                    <div class="condition-icon">💤</div>
+                    <h3>Sleep Disorders</h3>
+                    <p>Neurological sleep disorders including narcolepsy and restless legs syndrome</p>
+                </div>
+                
+                <div class="condition-card fade-in">
+                    <div class="condition-icon">🧬</div>
+                    <h3>Neurogenetics</h3>
+                    <p>Genetic neurological disorders including Huntington's disease and hereditary neuropathies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === DOCTORS SECTION === -->
+    <section id="doctors" class="neuro-doctors">
+        <div class="container">
+            <div class="section-title neuro-title">
+                <h2>Our Neurology Team</h2>
+                <p>Meet our board-certified neurologists and neuroscience specialists</p>
+            </div>
+            
+            <div class="doctors-grid">
+                <div class="doctor-card fade-in">
+                    <img src="images/1762893937142.jpg"alt="Dr. Anthony Bompetshi" class="doctor-img">
+                    <div class="doctor-info">
+                        <h3>Dr. Anthony Bompetshi</h3>
+                        <p>Neurologist & Chief of Surgery</p>
+                        <span class="doctor-specialty">Brain & Nerve Specialist</span>
+                        <p>Expert in treating complex neurological disorders</p>
+                    </div>
+                    
+                </div>
+                
+                <div class="doctor-card fade-in">
+                    <img src="images/pexels-cristian-rojas-8460094.jpg" alt="Dr. Jose Wilson" class="doctor-img">
+                    <div class="doctor-info">
+                        <h3>Dr. Jose Wilson</h3>
+                        <p>Epileptologist</p>
+                        <span class="doctor-specialty">Seizure Disorders</span>
+                        <p>Specializes in complex epilepsy cases and surgical management of seizure disorders.</p>
+                    </div>
+                </div>
+                
+                <div class="doctor-card fade-in">
+                    <img src="images/pexels-ivan-s-4989165.jpg" alt="Dr. Odogu Jotter" class="doctor-img">
+                    <div class="doctor-info">
+                        <h3>Dr. Odogu Jotter</h3>
+                        <p>Movement Disorders Specialist</p>
+                        <span class="doctor-specialty">Parkinson's Disease</span>
+                        <p>Expert in deep brain stimulation and advanced therapies for movement disorders.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === TECHNOLOGY SECTION === -->
+    <section class="technology-section">
+        <div class="container">
+            <div class="section-title neuro-title">
+                <h2>Advanced Neurological Technology</h2>
+                <p>State-of-the-art equipment for precise diagnosis and treatment</p>
+            </div>
+            
+            <div class="tech-container">
+                <div class="tech-image">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80" alt="Neurology Technology">
+                </div>
+                
+                <div class="tech-features">
+                    <h3>Cutting-Edge Neurological Care</h3>
+                    <p>Our Neurology Department is equipped with the latest technology to provide accurate diagnoses and effective treatments for all neurological conditions.</p>
+                    
+                    <ul class="tech-list">
+                        <li>3T MRI with advanced neuroimaging sequences</li>
+                        <li>Video EEG monitoring for seizure diagnosis</li>
+                        <li>EMG/NCS for neuromuscular disorders</li>
+                        <li>Transcranial Doppler for cerebrovascular assessment</li>
+                        <li>Deep Brain Stimulation programming</li>
+                        <li>Tele-neurology for remote consultations</li>
+                    </ul>
+                    
+                    <a href="#appointment" class="btn btn-neuro">Schedule a Neurological Evaluation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- === FOOTER === -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Redstone Health Center</h3>
+                    <p>Compassionate Care, Modern Excellence. We are committed to providing high-quality healthcare services to our community.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="doctors.html">Our Doctors</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                         <li><a href="CARDIAC.html">Cardiology</a></li>
+                        <li><a href="NEUROLOGY.html">Neurology</a></li>
+                        <li><a href="PEDIATRICS.html">Pediatrics</a></li>
+                        <li><a href="ORTHOPEDICS.html">Orthopedics</a></li>
+                        <li><a href="DENTISTRY.html">Dentistry</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Healthcare Ave, Medical District, City 12345</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>(011) 123-4567</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>neurology@redstonehealth.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon - Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 2:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Redstone Health Center. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // === NAVIGATION SCROLL EFFECT ===
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // === MOBILE MENU TOGGLE ===
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('nav ul');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            // Change icon
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // === DARK/LIGHT MODE TOGGLE ===
+        const themeToggle = document.getElementById('themeToggle');
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            // Change icon based on mode
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggle.classList.remove('fa-moon');
+                themeToggle.classList.add('fa-sun');
+            } else {
+                themeToggle.classList.remove('fa-sun');
+                themeToggle.classList.add('fa-moon');
+            }
+        });
+
+        // Add dark mode styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .dark-mode {
+                background-color: #1a1a1a;
+                color: #e0e0e0;
+            }
+                  .dark-mode nav ul li a {
+            color: #ffffff;
+        }
+            
+            .dark-mode nav {
+                background-color: rgba(30, 30, 30, 0.95);
+            }
+            
+            .dark-mode .neuro-about,
+            .dark-mode .technology-section{
+                background-color: #2a1a2a;
+            }
+            
+            .dark-mode .conditions-section,
+            .dark-mode .neuro-services,
+            .dark-mode .neuro-doctors {
+                background-color: #2d2d2d;
+            }
+            
+            .dark-mode .service-card,
+            .dark-mode .doctor-card,
+            .dark-mode .condition-card {
+                background-color: #3d3d3d;
+                color: #e0e0e0;
+            }
+            
+            .dark-mode .section-title p,
+            .dark-mode .neuro-text p,
+            .dark-mode .service-card p,
+            .dark-mode .doctor-info p,
+            .dark-mode .condition-card p {
+                color: #b0b0b0;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // === SCROLL ANIMATIONS ===
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        function checkFade() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkFade);
+        window.addEventListener('load', checkFade);
+
+        // === APPOINTMENT FORM HANDLING ===
+        const neuroAppointmentForm = document.getElementById('neuroAppointmentForm');
+        
+        neuroAppointmentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, you would send this data to a server
+            // For this demo, we'll just show an alert
+            alert('Thank you for your neurology consultation request! Our neurology team will contact you within 24 hours to schedule your appointment.');
+            neuroAppointmentForm.reset();
+        });
+
+        // Set minimum date for appointment to today
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.min = today;
+
+        
+    </script>
+</body>
+</html>

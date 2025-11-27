@@ -1,76 +1,220 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>APS Score Qualification Checker</title>
-  <link rel="stylesheet" href="testCSS.css">
-  
-</head>
-<body>
-  <div class="container">
-    <h1> APS Score Checker</h1>
-    <div class="marks">
-        <p>Enter Your subject marks:</p>
-    <input type="number" id="Mark1" placeholder="Enter mark">
-    <br>
-    <div class="marks">
-    <input type="number" id="Mark2" placeholder="Enter mark">
-    <br>
-    <div class="marks">
-    <input type="number" id="Mark3" placeholder="Enter mark">
-    <br>
-    <div class="marks">
-    <input type="number" id="Mark4" placeholder="Enter mark">
-    <br>
-    <div class="marks">
-    <input type="number" id="Mark5" placeholder="Enter mark">
-    <br>
-    <div class="marks">
-    <input type="number" id="Mark6" placeholder="Enter mark">
-    <br>
+<!-- Add this to your appointment section HTML -->
+<section id="appointment" class="appointment-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Book an Appointment</h2>
+            <p>Schedule your visit with our healthcare specialists</p>
+        </div>
+        
+        <div class="appointment-form">
+            <form id="appointmentForm">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="department">Department *</label>
+                    <select id="department" name="department" required>
+                        <option value="">Select a department</option>
+                        <option value="cardiology">Cardiology</option>
+                        <option value="neurology">Neurology</option>
+                        <option value="pediatrics">Pediatrics</option>
+                        <option value="orthopedics">Orthopedics</option>
+                        <option value="dentistry">Dentistry</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="doctor">Preferred Doctor</label>
+                    <select id="doctor" name="doctor">
+                        <option value="">Any available doctor</option>
+                        <option value="dr-johnson">Dr. Sarah Johnson</option>
+                        <option value="dr-chen">Dr. Michael Chen</option>
+                        <option value="dr-rodriguez">Dr. Emily Rodriguez</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Preferred Date *</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="time">Preferred Time</label>
+                    <select id="time" name="time">
+                        <option value="">Any available time</option>
+                        <option value="morning">Morning (9AM-12PM)</option>
+                        <option value="afternoon">Afternoon (1PM-4PM)</option>
+                        <option value="evening">Evening (5PM-7PM)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Additional Message</label>
+                    <textarea id="message" name="message" placeholder="Any specific concerns or requests"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="consent" name="consent" required>
+                        I agree to the <a href="privacy.html">Privacy Policy</a> and allow Redstone Health Center to contact me regarding my appointment.
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn" id="submitBtn">
+                    <i class="fas fa-calendar-check"></i> Book Appointment
+                </button>
+                
+                <div id="formMessage" class="form-message"></div>
+            </form>
+        </div>
     </div>
+</section>
 
+<style>
+/* Add these styles to your CSS */
+.form-message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+}
 
-    <button onclick="checkQualification()">Check Qualification</button>
-    <div class="result" id="result"></div>
-  </div>
+.form-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    display: block;
+}
 
-  <script>
-    function checkQualification() {
-     const mark = [ document.getElementById('Mark1').value,
-      document.getElementById('Mark2').value,
-      document.getElementById('Mark3').value,
-      document.getElementById('Mark4').value,
-      document.getElementById('Mark5').value,
-      document.getElementById('Mark6').value];
+.form-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    display: block;
+}
 
-      const result = document.getElementById('result');
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
 
-      if (mark.some(m => isNaN(m) || m === 0)) {
-        result.textContent = " Please enter all your marks.";
-        result.style.color = "#ffb347";
-        return;
-      }
+.checkbox-label input[type="checkbox"] {
+    margin-top: 3px;
+}
 
-            // Calculate APS (simple method: total / 10)
-      const total = mark.reduce((sum, m) => sum + m, 0);
-      const aps = Math.round(total / 10);
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+</style>
 
-      // Display APS and qualification message
-      result.innerHTML = `Your APS score is <strong>${aps}</strong><br>`;
+<script>
+// Add this JavaScript to handle form submission
+document.addEventListener('DOMContentLoaded', function() {
+    const appointmentForm = document.getElementById('appointmentForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const formMessage = document.getElementById('formMessage');
 
-      if (aps < 25) {
-        result.innerHTML += " Sorry, you do not qualify for university.";
-        result.style.color = "#ff4b5c";
-      } else {
-        result.innerHTML += " Congratulations! You qualify for university!";
-        result.style.color = "#00ff99";
-      }
+    // Set minimum date to today
+    const dateInput = document.getElementById('date');
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.min = today;
 
-
+    appointmentForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Show loading state
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        submitBtn.classList.add('loading');
+        
+        // Get form data
+        const formData = new FormData(appointmentForm);
+        const data = Object.fromEntries(formData);
+        
+        try {
+            // Send data to server (you'll need to implement this endpoint)
+            const response = await fetch('/api/appointments', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+            
+            const result = await response.json();
+            
+            if (response.ok) {
+                // Success
+                showMessage('Thank you! Your appointment request has been submitted. We will contact you within 24 hours to confirm.', 'success');
+                appointmentForm.reset();
+                
+                // Send confirmation email (this would be handled by your backend)
+                await sendConfirmationEmail(data);
+                
+            } else {
+                // Error from server
+                showMessage(result.message || 'There was an error submitting your request. Please try again.', 'error');
+            }
+            
+        } catch (error) {
+            // Network error
+            showMessage('Network error. Please check your connection and try again.', 'error');
+            console.error('Appointment submission error:', error);
+        } finally {
+            // Reset button state
+            submitBtn.innerHTML = '<i class="fas fa-calendar-check"></i> Book Appointment';
+            submitBtn.classList.remove('loading');
+        }
+    });
     
+    function showMessage(message, type) {
+        formMessage.textContent = message;
+        formMessage.className = `form-message ${type}`;
+        formMessage.style.display = 'block';
+        
+        // Scroll to message
+        formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-  </script>
-</body>
-</html>
+    
+    // This function would be called by your backend
+    async function sendConfirmationEmail(appointmentData) {
+        // This is where you'd integrate with your email service
+        // Example using EmailJS, SendGrid, or your own backend
+        try {
+            const emailResponse = await fetch('/api/send-confirmation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    to: appointmentData.email,
+                    subject: 'Appointment Request Received - Redstone Health Center',
+                    appointment: appointmentData
+                })
+            });
+            
+            if (!emailResponse.ok) {
+                console.warn('Failed to send confirmation email');
+            }
+        } catch (emailError) {
+            console.warn('Email service error:', emailError);
+        }
+    }
+});
+</script>

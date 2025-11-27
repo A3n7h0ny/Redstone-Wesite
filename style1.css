@@ -76,6 +76,13 @@
             transform: translateY(-3px);
             box-shadow: 0 7px 15px rgba(0, 121, 151, 0.3);
         }
+        .ViewMore{
+            background-color: var(--light);
+            padding: 20px 30px;
+            margin: 0 auto;
+            align-items: center;
+            text-align: center;
+        }
 
         .btn-secondary {
             background-color: var(--secondary);
@@ -794,7 +801,8 @@
         }
 
         body.dark-mode .services-section,
-        body.dark-mode .doctors-section {
+        body.dark-mode .doctors-section,
+        body.dark-mode .ViewMore {
             background-color: #222;
         }
 

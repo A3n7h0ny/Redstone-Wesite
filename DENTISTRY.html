@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dentistry Department - Redstone Health Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <style>
+        /* === GLOBAL STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #007997;
+            --primary-light: #4da6bf;
+            --primary-dark: #005a70;
+            --secondary: #5cb85c;
+            --accent: #ff914d;
+            --dental-blue: #3498db;
+            --dental-light: #ebf5fb;
+            --dental-teal: #1abc9c;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #6c757d;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button, .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        button:hover, .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 121, 151, 0.3);
+        }
+
+        .btn-dental {
+            background-color: var(--dental-blue);
+        }
+
+        .btn-dental:hover {
+            background-color: #2980b9;
+            box-shadow: 0 7px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-teal {
+            background-color: var(--dental-teal);
+        }
+
+        .btn-teal:hover {
+            background-color: #16a085;
+            box-shadow: 0 7px 15px rgba(26, 188, 156, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background-color: #4cae4c;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .dental-title h2 {
+            color: var(--dental-blue);
+        }
+
+        .dental-title h2:after {
+            background-color: var(--dental-blue);
+        }
+
+        /* === NAVIGATION === */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            padding: 15px 5%;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            border-radius: 50%;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: var(--dark);
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-item {
+            margin-right: 20px;
+        }
+
+        .contact-item a {
+            background-color: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .contact-item a:hover {
+            background-color: #4cae4c;
+            transform: translateY(-2px);
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .theme-icon {
+            font-size: 1.2rem;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-icon:hover {
+            color: var(--primary);
+            transform: rotate(30deg);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* === HERO SECTION === */
+        .dental-hero {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.9) 0%, rgba(41, 128, 185, 0.8) 100%), url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .dental-hero-content {
+            max-width: 800px;
+            margin-left: 10%;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .dental-hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .dental-hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* === ABOUT DENTISTRY SECTION === */
+        .dental-about {
+            background-color: var(--dental-light);
+        }
+
+        .dental-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .dental-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .dental-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .dental-img:hover img {
+            transform: scale(1.03);
+        }
+
+        .dental-text {
+            flex: 1;
+        }
+
+        .dental-text h2 {
+            color: var(--dental-blue);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .dental-text p {
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .expertise-list {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .expertise-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .expertise-list li:before {
+            content: '😁';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* === SERVICES SECTION === */
+        .dental-services {
+            background-color: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border-top: 4px solid var(--dental-blue);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(52, 152, 219, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .service-icon i {
+            font-size: 1.8rem;
+            color: var(--dental-blue);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dental-blue);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+        }
+
+        /* === SPECIALTIES SECTION === */
+        .specialties-section {
+            background-color: var(--light);
+        }
+
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .specialty-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .specialty-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .specialty-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--dental-blue);
+        }
+
+        .specialty-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dental-blue);
+        }
+
+        .specialty-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* === DOCTORS SECTION === */
+        .dental-doctors {
+            background-color: var(--white);
+        }
+
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .doctor-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .doctor-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .doctor-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .doctor-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--dental-blue);
+        }
+
+        .doctor-info p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .doctor-specialty {
+            display: inline-block;
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--dental-blue);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+
+        /* === TECHNOLOGY SECTION === */
+        .technology-section {
+            background-color: var(--dental-light);
+        }
+
+        .tech-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .tech-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .tech-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .tech-features {
+            flex: 1;
+        }
+
+        .tech-features h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--dental-blue);
+        }
+
+        .tech-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .tech-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .tech-list li:before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+        }
+
+        /* === PREVENTION SECTION === */
+        .prevention-section {
+            background-color: var(--white);
+        }
+
+        .prevention-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .prevention-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border-left: 4px solid var(--dental-teal);
+        }
+
+        .prevention-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .prevention-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dental-teal);
+        }
+
+        .prevention-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dental-blue);
+        }
+
+        .prevention-card p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        /* === COSMETIC SECTION === */
+        .cosmetic-section {
+            background: linear-gradient(135deg, var(--dental-teal) 0%, #16a085 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cosmetic-section .section-title h2 {
+            color: white;
+        }
+
+        .cosmetic-section .section-title h2:after {
+            background-color: var(--accent);
+        }
+
+        .cosmetic-section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+        }
+
+        .cosmetic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .cosmetic-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .cosmetic-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .cosmetic-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .cosmetic-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 70px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .footer-column p {
+            margin-bottom: 20px;
+            color: #bbb;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === RESPONSIVE STYLES === */
+        @media (max-width: 992px) {
+            .dental-hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .dental-container, .tech-container {
+                flex-direction: column;
+            }
+
+            .dental-img, .dental-text, .tech-image, .tech-features {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-right {
+                display: none;
+            }
+
+            .dental-hero-content {
+                margin: 0 5%;
+                text-align: center;
+            }
+
+            .dental-hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .cosmetic-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .dental-hero-content h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .service-card, .doctor-card, .specialty-card, .prevention-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+      <!-- === NAVIGATION === -->
+    <nav id="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="images/image.png" ></a>
+            <h1>Redstone Health Center</h1>
+        </div>
+
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#about" class="active">About</a></li>
+            <li><a href="#gallery">Facilities</a></li>
+            <li><a href="#View-Team">Doctors</a></li>
+
+        </ul>
+
+        <div class="nav-right">
+            <div class="contact-item">
+                <a href="contact.html">Contact Us</a>
+            </div>
+            
+            <div class="nav-icons">
+                <i class="fas fa-moon theme-icon" id="themeToggle"></i>
+            </div>
+        </div>
+    </nav>
+    
+
+    <!-- === HERO SECTION === -->
+    <section class="dental-hero">
+        <div class="dental-hero-content">
+            <h1>Dentistry Department</h1>
+            <p>Comprehensive dental care for the whole family. Our dental team provides expert preventive, restorative, and cosmetic dentistry in a comfortable, modern environment to help you achieve and maintain optimal oral health.</p>
+            <div class="hero-buttons">
+                <a href="contact.html" class="btn btn-dental"><i class="fas fa-tooth"></i> Schedule Dental Visit</a>
+                <a href="#services" class="btn btn-outline">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- === ABOUT DENTISTRY SECTION === -->
+    <section id="about" class="dental-about">
+        <div class="container">
+            <div class="section-title dental-title">
+                <h2>Comprehensive Dental Care</h2>
+                <p>Expert oral health services for patients of all ages</p>
+            </div>
+            
+            <div class="dental-container">
+                <div class="dental-img">
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Dentistry Department">
+                </div>
+                
+                <div class="dental-text">
+                    <h2>Your Smile is Our Priority</h2>
+                    <p>
+                        The Dentistry Department at Redstone Health Center provides comprehensive, 
+                        patient-centered care for all your oral health needs. Our team of experienced 
+                        dentists and dental specialists creates a warm, welcoming environment where 
+                        patients of all ages feel comfortable and cared for.
+                    </p>
+                    
+                    <p>
+                        We believe that excellent dental care goes beyond treating problems - it's about 
+                        prevention, education, and helping you achieve the healthy, beautiful smile you deserve. 
+                        Our approach combines the latest dental technology with compassionate care to ensure 
+                        your dental experience is positive and effective.
+                    </p>
+                    
+                    <h3>Our Specialized Expertise</h3>
+                    <ul class="expertise-list">
+                        <li>Preventive Dentistry and Oral Hygiene Education</li>
+                        <li>Restorative Dentistry including Fillings and Crowns</li>
+                        <li>Cosmetic Dentistry for Smile Enhancement</li>
+                        <li>Periodontal Treatment for Gum Health</li>
+                        <li>Endodontic Therapy including Root Canals</li>
+                        <li>Pediatric Dentistry for Children's Dental Health</li>
+                    </ul>
+                    
+                    <a href="#doctors" class="btn btn-dental">Meet Our Dentists</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SERVICES SECTION === -->
+    <section id="services" class="dental-services">
+        <div class="container">
+            <div class="section-title dental-title">
+                <h2>Dental Services</h2>
+                <p>Comprehensive oral health services for your entire family</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-tooth"></i>
+                    </div>
+                    <h3>Preventive Care</h3>
+                    <p>Regular check-ups, cleanings, oral cancer screenings, and personalized oral hygiene instruction to maintain optimal dental health.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-teeth"></i>
+                    </div>
+                    <h3>Restorative Dentistry</h3>
+                    <p>Fillings, crowns, bridges, and dental implants to repair damaged teeth and restore function and appearance.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <h3>Cosmetic Dentistry</h3>
+                    <p>Teeth whitening, veneers, bonding, and complete smile makeovers to enhance your appearance and boost confidence.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-teeth-open"></i>
+                    </div>
+                    <h3>Periodontal Care</h3>
+                    <p>Comprehensive diagnosis and treatment of gum disease including deep cleanings and periodontal therapy.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-tooth"></i>
+                    </div>
+                    <h3>Endodontics</h3>
+                    <p>Root canal therapy and other treatments to save damaged teeth and relieve dental pain.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3>Pediatric Dentistry</h3>
+                    <p>Specialized dental care for children including preventive services, sealants, and gentle treatment approaches.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SPECIALTIES SECTION === -->
+    <section class="specialties-section">
+        <div class="container">
+            <div class="section-title dental-title">
+                <h2>Dental Specialties</h2>
+                <p>Advanced specialized care for complex dental needs</p>
+            </div>
+            
+            <div class="specialties-grid">
+                <div class="specialty-card fade-in">
+                    <div class="specialty-icon">🦷</div>
+                    <h3>Orthodontics</h3>
+                    <p>Braces, aligners, and other appliances to straighten teeth and correct bite issues for all ages.</p>
+                </div>
+                
+                <div class="specialty-card fade-in">
+                    <div class="specialty-icon">👨‍⚕️</div>
+                    <h3>Oral Surgery</h3>
+                    <p>Tooth extractions, wisdom teeth removal, dental implants, and complex surgical procedures.</p>
+                </div>
+                
+                <div class="specialty-card fade-in">
+                    <div class="specialty-icon">😴</div>
+                    <h3>Sedation Dentistry</h3>
+                    <p>Nitrous oxide, oral sedation, and IV sedation options for anxious patients or complex procedures.</p>
+                </div>
+                
+                <div class="specialty-card fade-in">
+                    <div class="specialty-icon">🦷</div>
+                    <h3>Prosthodontics</h3>
+                    <p>Advanced tooth replacement with dentures, bridges, and complex dental implant restorations.</p>
+                </div>
+                
+                <div class="specialty-card fade-in">
+                    <div class="specialty-icon">🦷</div>
+                    <h3>TMJ Treatment</h3>
+                    <p>Diagnosis and management of temporomandibular joint disorders and related facial pain.</p>
+                </div>
+                
+                <div class="specialty-card fade-in">
+                    <div class="specialty-icon">🦷</div>
+                    <h3>Emergency Care</h3>
+                    <p>Prompt treatment for dental emergencies including toothaches, broken teeth, and dental trauma.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === DOCTORS SECTION === -->
+    <section id="doctors" class="dental-doctors">
+        <div class="container">
+            <div class="section-title dental-title">
+                <h2>Our Dental Team</h2>
+                <p>Meet our experienced dentists and dental specialists</p>
+            </div>
+            
+            <div class="doctors-grid">
+                <div class="doctor-card fade-in">
+                    <img src="images/1764112613813.jpg" alt="Dr. Kgaldi Masenya" class="doctor-img">
+                    <div class="doctor-info">
+                        <h3>Dr. Kgaladi Masenya </h3>
+                        <p>Dentistry Manager</p>
+                        <span class="doctor-specialty">Dental Services</span>
+                        <p>Oversees dental services, manages dental staff and quality dental care</p>
+                    </div>
+                </div>
+                
+                <div class="doctor-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Dr. Michael Rodriguez" class="doctor-img">
+                    <div class="doctor-info">
+                        <h3>Dr. Michael Rodriguez</h3>
+                        <p>Prosthodontist</p>
+                        <span class="doctor-specialty">Cosmetic & Restorative</span>
+                        <p>Specializes in complex dental reconstructions, implants, and aesthetic smile design.</p>
+                    </div>
+                </div>
+                
+                <div class="doctor-card fade-in">
+                    <img src="images/pexels-konrads-photo-32254667.jpg" alt="Dr. Sarah Chen" class="doctor-img">
+                    <div class="doctor-info">
+                        <h3>Dr. Sarah Chen</h3>
+                        <p>Pediatric Dentist</p>
+                        <span class="doctor-specialty">Children's Dentistry</span>
+                        <p>Expert in making dental visits positive experiences for children and managing special needs patients.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === TECHNOLOGY SECTION === -->
+    <section class="technology-section">
+        <div class="container">
+            <div class="section-title dental-title">
+                <h2>Advanced Dental Technology</h2>
+                <p>State-of-the-art equipment for precise diagnosis and comfortable treatment</p>
+            </div>
+            
+            <div class="tech-container">
+                <div class="tech-image">
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Dental Technology">
+                </div>
+                
+                <div class="tech-features">
+                    <h3>Modern Dental Care</h3>
+                    <p>Our Dentistry Department is equipped with the latest technology to provide accurate diagnoses, effective treatments, and enhanced patient comfort.</p>
+                    
+                    <ul class="tech-list">
+                        <li>Digital X-rays with 90% less radiation than traditional films</li>
+                        <li>Intraoral cameras for detailed examination and patient education</li>
+                        <li>CAD/CAM technology for same-day crowns and restorations</li>
+                        <li>Laser dentistry for precise, minimally invasive procedures</li>
+                        <li>3D cone beam CT imaging for advanced diagnosis and treatment planning</li>
+                        <li>Digital smile design software for cosmetic treatment previews</li>
+                    </ul>
+                    
+                    <a href="contact.html" class="btn btn-dental">Schedule a Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === PREVENTION SECTION === -->
+    <section class="prevention-section">
+        <div class="container">
+            <div class="section-title dental-title">
+                <h2>Preventive Care & Education</h2>
+                <p>Comprehensive resources to maintain optimal oral health</p>
+            </div>
+            
+            <div class="prevention-grid">
+                <div class="prevention-card fade-in">
+                    <div class="prevention-icon">
+                        <i class="fas fa-toothbrush"></i>
+                    </div>
+                    <h3>Oral Hygiene Education</h3>
+                    <p>Personalized instruction on proper brushing, flossing techniques, and selecting the right oral care products for your needs.</p>
+                    <a href="#" class="btn btn-outline">Learn More</a>
+                </div>
+                
+                <div class="prevention-card fade-in">
+                    <div class="prevention-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <h3>Nutrition Counseling</h3>
+                    <p>Guidance on diet and nutrition choices that support dental health and prevent tooth decay and gum disease.</p>
+                    <a href="#" class="btn btn-outline">Learn More</a>
+                </div>
+                
+                <div class="prevention-card fade-in">
+                    <div class="prevention-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Protective Treatments</h3>
+                    <p>Dental sealants, fluoride treatments, and custom mouthguards to protect teeth from decay and injury.</p>
+                    <a href="#" class="btn btn-outline">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === COSMETIC SECTION === -->
+    <section class="cosmetic-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Cosmetic Dentistry</h2>
+                <p>Transform your smile with our aesthetic dental services</p>
+            </div>
+            
+            <div class="cosmetic-grid">
+                <div class="cosmetic-card fade-in">
+                    <div class="cosmetic-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Teeth Whitening</h3>
+                    <p>Professional in-office and take-home whitening systems to brighten your smile by several shades.</p>
+                </div>
+                
+                <div class="cosmetic-card fade-in">
+                    <div class="cosmetic-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Porcelain Veneers</h3>
+                    <p>Custom-made thin shells that cover the front surface of teeth to correct discoloration, chips, or gaps.</p>
+                </div>
+                
+                <div class="cosmetic-card fade-in">
+                    <div class="cosmetic-icon">
+                        <i class="fas fa-teeth"></i>
+                    </div>
+                    <h3>Invisalign®</h3>
+                    <p>Clear, removable aligners that straighten teeth discreetly without traditional metal braces.</p>
+                </div>
+                
+                <div class="cosmetic-card fade-in">
+                    <div class="cosmetic-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Dental Bonding</h3>
+                    <p>Tooth-colored resin applied to repair chips, cracks, or gaps for immediate aesthetic improvement.</p>
+                </div>
+            </div>
+            
+            <a href="contact.html" class="btn btn-teal">Schedule Smile Consultation</a>
+        </div>
+    </section>
+
+    <!-- === FOOTER === -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Redstone Health Center</h3>
+                    <p>Compassionate Care, Modern Excellence. We are committed to providing high-quality healthcare services to our community.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="doctors.html">Our Doctors</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                         <li><a href="CARDIAC.html">Cardiology</a></li>
+                        <li><a href="NEUROLOGY.html">Neurology</a></li>
+                        <li><a href="PEDIATRICS.html">Pediatrics</a></li>
+                        <li><a href="ORTHOPEDICS.html">Orthopedics</a></li>
+                        <li><a href="DENTISTRY.html">Dentistry</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Healthcare Ave, Medical District, City 12345</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>(011) 123-4567</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>dentistry@redstonehealth.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon - Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 2:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Redstone Health Center. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // === NAVIGATION SCROLL EFFECT ===
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // === MOBILE MENU TOGGLE ===
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('nav ul');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            // Change icon
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // === DARK/LIGHT MODE TOGGLE ===
+        const themeToggle = document.getElementById('themeToggle');
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            // Change icon based on mode
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggle.classList.remove('fa-moon');
+                themeToggle.classList.add('fa-sun');
+            } else {
+                themeToggle.classList.remove('fa-sun');
+                themeToggle.classList.add('fa-moon');
+            }
+        });
+
+        // Add dark mode styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .dark-mode {
+                background-color: #1a1a1a;
+                color: #e0e0e0;
+            }
+            .dark-mode nav ul li a {
+            color: #ffffff;
+        }
+            .dark-mode nav {
+                background-color: rgba(30, 30, 30, 0.98);
+            }
+            .dark-mode nav.scrolled {
+            background-color: rgba(30, 30, 30, 0.98);
+        }
+            
+            .dark-mode .dental-about,
+            .dark-mode .specialties-section,
+            .dark-mode .technology-section {
+                background-color: #1a2a3a;
+            }
+            .dark-mode .cosmetic-section {
+            background: linear-gradient(135deg, var(--dental-teal) 0%, #175817 100%);
+        }
+            
+            .dark-mode .specialties-section,
+            .dark-mode .dental-services,
+            .dark-mode .dental-doctors,
+            .dark-mode .prevention-section {
+                background-color: #2d2d2d;
+            }
+            
+            .dark-mode .service-card,
+            .dark-mode .doctor-card,
+            .dark-mode .specialty-card,
+            .dark-mode .prevention-card {
+                background-color: #3d3d3d;
+                color: #e0e0e0;
+            }
+            
+            .dark-mode .section-title p,
+            .dark-mode .dental-text p,
+            .dark-mode .service-card p,
+            .dark-mode .doctor-info p,
+            .dark-mode .specialty-card p,
+            .dark-mode .prevention-card p {
+                color: #b0b0b0;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // === SCROLL ANIMATIONS ===
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        function checkFade() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkFade);
+        window.addEventListener('load', checkFade);
+
+        
+    </script>
+</body>
+</html>

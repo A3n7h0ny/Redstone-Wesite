@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orthopedics Department - Redstone Health Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <style>
+        /* === GLOBAL STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #007997;
+            --primary-light: #4da6bf;
+            --primary-dark: #005a70;
+            --secondary: #5cb85c;
+            --accent: #ff914d;
+            --ortho-green: #27ae60;
+            --ortho-light: #e8f6f3;
+            --ortho-dark: #229954;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #6c757d;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button, .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        button:hover, .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 121, 151, 0.3);
+        }
+
+        .btn-ortho {
+            background-color: var(--ortho-green);
+        }
+
+        .btn-ortho:hover {
+            background-color: var(--ortho-dark);
+            box-shadow: 0 7px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background-color: #4cae4c;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .ortho-title h2 {
+            color: var(--ortho-green);
+        }
+
+        .ortho-title h2:after {
+            background-color: var(--ortho-green);
+        }
+
+        /* === NAVIGATION === */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            padding: 15px 5%;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            border-radius: 50%;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: var(--dark);
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-item {
+            margin-right: 20px;
+        }
+
+        .contact-item a {
+            background-color: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .contact-item a:hover {
+            background-color: #4cae4c;
+            transform: translateY(-2px);
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .theme-icon {
+            font-size: 1.2rem;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-icon:hover {
+            color: var(--primary);
+            transform: rotate(30deg);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* === HERO SECTION === */
+        .ortho-hero {
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.9) 0%, rgba(34, 153, 84, 0.8) 100%), url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .ortho-hero-content {
+            max-width: 800px;
+            margin-left: 10%;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .ortho-hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .ortho-hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* === ABOUT ORTHOPEDICS SECTION === */
+        .ortho-about {
+            background-color: var(--ortho-light);
+        }
+
+        .ortho-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .ortho-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .ortho-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .ortho-img:hover img {
+            transform: scale(1.03);
+        }
+
+        .ortho-text {
+            flex: 1;
+        }
+
+        .ortho-text h2 {
+            color: var(--ortho-green);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .ortho-text p {
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .expertise-list {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .expertise-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .expertise-list li:before {
+            content: '🦴';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* === SERVICES SECTION === */
+        .ortho-services {
+            background-color: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border-top: 4px solid var(--ortho-green);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(39, 174, 96, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .service-icon i {
+            font-size: 1.8rem;
+            color: var(--ortho-green);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--ortho-green);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+        }
+
+        /* === CONDITIONS SECTION === */
+        .conditions-section {
+            background-color: var(--light);
+        }
+
+        .conditions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .condition-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .condition-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .condition-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--ortho-green);
+        }
+
+        .condition-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--ortho-green);
+        }
+
+        .condition-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* === DOCTORS SECTION === */
+        .ortho-doctors {
+            background-color: var(--white);
+        }
+
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .doctor-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .doctor-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .doctor-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .doctor-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--ortho-green);
+        }
+
+        .doctor-info p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .doctor-specialty {
+            display: inline-block;
+            background-color: rgba(39, 174, 96, 0.1);
+            color: var(--ortho-green);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            border: 1px solid rgba(39, 174, 96, 0.2);
+        }
+
+        /* === TECHNOLOGY SECTION === */
+        .technology-section {
+            background-color: var(--ortho-light);
+        }
+
+        .tech-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .tech-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .tech-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .tech-features {
+            flex: 1;
+        }
+
+        .tech-features h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--ortho-green);
+        }
+
+        .tech-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .tech-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .tech-list li:before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+        }
+
+        /* === RECOVERY SECTION === */
+        .recovery-section {
+            background-color: var(--white);
+        }
+
+        .recovery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .recovery-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border-left: 4px solid var(--ortho-green);
+        }
+
+        .recovery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .recovery-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--ortho-green);
+        }
+
+        .recovery-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--ortho-green);
+        }
+
+        .recovery-card p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        /* === PREVENTION SECTION === */
+        .prevention-section {
+            background: linear-gradient(135deg, var(--ortho-green) 0%, var(--ortho-dark) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .prevention-section .section-title h2 {
+            color: white;
+        }
+
+        .prevention-section .section-title h2:after {
+            background-color: var(--accent);
+        }
+
+        .prevention-section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+        }
+
+        .prevention-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .prevention-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .prevention-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .prevention-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .prevention-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 70px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .footer-column p {
+            margin-bottom: 20px;
+            color: #bbb;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === RESPONSIVE STYLES === */
+        @media (max-width: 992px) {
+            .ortho-hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .ortho-container, .tech-container {
+                flex-direction: column;
+            }
+
+            .ortho-img, .ortho-text, .tech-image, .tech-features {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-right {
+                display: none;
+            }
+
+            .ortho-hero-content {
+                margin: 0 5%;
+                text-align: center;
+            }
+
+            .ortho-hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .prevention-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .ortho-hero-content h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .service-card, .doctor-card, .condition-card, .recovery-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+      <!-- === NAVIGATION === -->
+    <nav id="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="images/image.png" ></a>
+            <h1>Redstone Health Center</h1>
+        </div>
+
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#about" class="active">About</a></li>
+            <li><a href="#gallery">Info</a></li>
+            <li><a href="#">Doctors</a></li>
+
+        </ul>
+
+        <div class="nav-right">
+            <div class="contact-item">
+                <a href="contact.html">Contact Us</a>
+            </div>
+            
+            <div class="nav-icons">
+                <i class="fas fa-moon theme-icon" id="themeToggle"></i>
+            </div>
+        </div>
+    </nav>
+   
+    <!-- === HERO SECTION === -->
+    <section class="ortho-hero">
+        <div class="ortho-hero-content">
+            <h1>Orthopedics Department</h1>
+            <p>Expert care for bones, joints, and muscles. Our orthopedic specialists provide comprehensive treatment for injuries, arthritis, and musculoskeletal conditions to help you regain mobility and live pain-free.</p>
+            <div class="hero-buttons">
+                <a href="contact.html" class="btn btn-ortho"><i class="fas fa-bone"></i> Schedule Consultation</a>
+                <a href="#services" class="btn btn-outline">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- === ABOUT ORTHOPEDICS SECTION === -->
+    <section id="about" class="ortho-about">
+        <div class="container">
+            <div class="section-title ortho-title">
+                <h2>Comprehensive Orthopedic Care</h2>
+                <p>Expert diagnosis and treatment for musculoskeletal conditions</p>
+            </div>
+            
+            <div class="ortho-container">
+                <div class="ortho-img">
+                    <img src="images/pexels-enginakyurt-2678059.jpg" alt="Orthopedics Department">
+                </div>
+                
+                <div class="ortho-text">
+                    <h2>Restoring Mobility, Relieving Pain</h2>
+                    <p>
+                        The Orthopedics Department at Redstone Health Center provides comprehensive, 
+                        patient-centered care for disorders affecting the musculoskeletal system. 
+                        Our team of board-certified orthopedic surgeons and specialists utilize 
+                        advanced techniques to diagnose and treat conditions affecting bones, joints, 
+                        muscles, ligaments, and tendons.
+                    </p>
+                    
+                    <p>
+                        We understand that musculoskeletal conditions can significantly impact 
+                        quality of life, which is why we take a comprehensive approach to care, 
+                        combining surgical expertise with non-surgical treatments, physical therapy, 
+                        and rehabilitation to help patients return to their active lifestyles.
+                    </p>
+                    
+                    <h3>Our Specialized Expertise</h3>
+                    <ul class="expertise-list">
+                        <li>Joint Replacement and Reconstruction</li>
+                        <li>Sports Medicine and Arthroscopic Surgery</li>
+                        <li>Spinal Disorders and Back Pain Treatment</li>
+                        <li>Fracture Care and Trauma Surgery</li>
+                        <li>Arthritis and Joint Preservation</li>
+                        <li>Pediatric Orthopedics and Scoliosis</li>
+                    </ul>
+                    
+                    <a href="#doctors" class="btn btn-ortho">Meet Our Orthopedic Specialists</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === SERVICES SECTION === -->
+    <section id="services" class="ortho-services">
+        <div class="container">
+            <div class="section-title ortho-title">
+                <h2>Orthopedic Services</h2>
+                <p>Comprehensive care for all musculoskeletal conditions</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Joint Replacement</h3>
+                    <p>Advanced hip, knee, and shoulder replacement surgeries using minimally invasive techniques for faster recovery.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3>Sports Medicine</h3>
+                    <p>Comprehensive care for athletic injuries including ACL tears, rotator cuff injuries, and cartilage damage.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-spine"></i>
+                    </div>
+                    <h3>Spine Care</h3>
+                    <p>Specialized treatment for back pain, herniated discs, spinal stenosis, and scoliosis with surgical and non-surgical options.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-bone-break"></i>
+                    </div>
+                    <h3>Fracture Care</h3>
+                    <p>Expert management of complex fractures and traumatic injuries with advanced fixation techniques.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-wheelchair"></i>
+                    </div>
+                    <h3>Arthritis Treatment</h3>
+                    <p>Comprehensive management of osteoarthritis and inflammatory arthritis including joint preservation techniques.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3>Pediatric Orthopedics</h3>
+                    <p>Specialized care for children with congenital conditions, growth plate injuries, and developmental disorders.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === CONDITIONS SECTION === -->
+    <section class="conditions-section">
+        <div class="container">
+            <div class="section-title ortho-title">
+                <h2>Conditions We Treat</h2>
+                <p>Expert care for a wide range of orthopedic conditions</p>
+            </div>
+            
+            <div class="conditions-grid">
+                <div class="condition-card fade-in">
+                    <div class="condition-icon">🦵</div>
+                    <h3>Osteoarthritis</h3>
+                    <p>Degenerative joint disease affecting hips, knees, and shoulders with comprehensive treatment options</p>
+                </div>
+                
+                <div class="condition-card fade-in">
+                    <div class="condition-icon">🏃</div>
+                    <h3>Sports Injuries</h3>
+                    <p>ACL tears, meniscus injuries, rotator cuff tears, and other athletic-related musculoskeletal injuries</p>
+                </div>
+                
+                <div class="condition-card fade-in">
+                    <div class="condition-icon">🦴</div>
+                    <h3>Fractures</h3>
+                    <p>Simple and complex fractures requiring casting, external fixation, or surgical intervention</p>
+                </div>
+                
+                <div class="condition-card fade-in">
+                    <div class="condition-icon">🌀</div>
+                    <h3>Spinal Disorders</h3>
+                    <p>Herniated discs, spinal stenosis, spondylolisthesis, and other conditions causing back pain</p>
+                </div>
+                
+                <div class="condition-card fade-in">
+                    <div class="condition-icon">👶</div>
+                    <h3>Pediatric Conditions</h3>
+                    <p>Scoliosis, clubfoot, developmental dysplasia of the hip, and other childhood orthopedic issues</p>
+                </div>
+                
+                <div class="condition-card fade-in">
+                    <div class="condition-icon">🤕</div>
+                    <h3>Joint Injuries</h3>
+                    <p>Dislocations, ligament tears, cartilage damage, and other traumatic joint injuries</p>
+                </div>
+                
+                <div class="condition-card fade-in">
+                    <div class="condition-icon">🦶</div>
+                    <h3>Foot & Ankle</h3>
+                    <p>Bunions, plantar fasciitis, ankle instability, and other conditions affecting lower extremities</p>
+                </div>
+                
+                <div class="condition-card fade-in">
+                    <div class="condition-icon">🖐️</div>
+                    <h3>Hand & Wrist</h3>
+                    <p>Carpal tunnel, trigger finger, arthritis, and traumatic injuries affecting hand function</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === DOCTORS SECTION === -->
+    <section id="doctors" class="ortho-doctors">
+        <div class="container">
+            <div class="section-title ortho-title">
+                <h2>Our Orthopedic Team</h2>
+                <p>Meet our board-certified orthopedic surgeons and specialists</p>
+            </div>
+            
+            <div class="doctors-grid">
+                <div class="doctor-card fade-in">
+                    <img src="images/1763053305859.jpg"alt="Dr. Tshifiwa" class="doctor-img">
+                    <div class="doctor-info">
+                        <h3>Dr. Tshifiwa Nkhumeleni</h3>
+                        <p>Orthopedist</p>
+                        <span class="doctor-specialty">Bone & joint Specialist</span>
+                        <p>Expert in treating complex bones and joints disorders</p>
+                    </div>
+                    
+                </div>
+                
+                <div class="doctor-card fade-in">
+                    <img src="images/pexels-oys-photography-838143052-19438560.jpg" alt="Dr. Danny Katie" class="doctor-img">
+                    <div class="doctor-info">
+                        <h3>Dr. Danny Katie</h3>
+                        <p>Sports Medicine Specialist</p>
+                        <span class="doctor-specialty">Arthroscopic Surgery</span>
+                        <p>Team physician for professional athletes specializing in advanced arthroscopic procedures.</p>
+                    </div>
+                </div>
+                
+                <div class="doctor-card fade-in">
+                    <img src="images/pexels-kooldark-14628069.jpg" alt="Dr. Michael Chen" class="doctor-img">
+                    <div class="doctor-info">
+                        <h3>Dr. Michael Chen</h3>
+                        <p>Spine Specialist</p>
+                        <span class="doctor-specialty">Spinal Surgery</span>
+                        <p>Expert in complex spinal disorders including minimally invasive spine surgery techniques.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === TECHNOLOGY SECTION === -->
+    <section class="technology-section">
+        <div class="container">
+            <div class="section-title ortho-title">
+                <h2>Advanced Orthopedic Technology</h2>
+                <p>State-of-the-art equipment for precise diagnosis and treatment</p>
+            </div>
+            
+            <div class="tech-container">
+                <div class="tech-image">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80" alt="Orthopedic Technology">
+                </div>
+                
+                <div class="tech-features">
+                    <h3>Cutting-Edge Orthopedic Care</h3>
+                    <p>Our Orthopedics Department is equipped with the latest technology to provide accurate diagnoses and effective treatments for all musculoskeletal conditions.</p>
+                    
+                    <ul class="tech-list">
+                        <li>3D imaging and computer-assisted navigation for joint replacement</li>
+                        <li>Advanced arthroscopic systems for minimally invasive surgery</li>
+                        <li>Robotic-assisted surgical systems for enhanced precision</li>
+                        <li>Bone density scanning and metabolic bone disease evaluation</li>
+                        <li>Regenerative medicine including PRP and stem cell therapies</li>
+                        <li>Advanced physical therapy and rehabilitation equipment</li>
+                    </ul>
+                    
+                    <a href="contact.html" class="btn btn-ortho">Schedule an Evaluation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === RECOVERY SECTION === -->
+    <section class="recovery-section">
+        <div class="container">
+            <div class="section-title ortho-title">
+                <h2>Rehabilitation & Recovery</h2>
+                <p>Comprehensive support for optimal healing and return to activity</p>
+            </div>
+            
+            <div class="recovery-grid">
+                <div class="recovery-card fade-in">
+                    <div class="recovery-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Physical Therapy</h3>
+                    <p>Customized rehabilitation programs designed to restore strength, mobility, and function after injury or surgery.</p>
+                    <a href="#" class="btn btn-outline">Learn More</a>
+                </div>
+                
+                <div class="recovery-card fade-in">
+                    <div class="recovery-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Occupational Therapy</h3>
+                    <p>Specialized therapy to help patients return to daily activities, work, and hobbies following orthopedic conditions.</p>
+                    <a href="#" class="btn btn-outline">Learn More</a>
+                </div>
+                
+                <div class="recovery-card fade-in">
+                    <div class="recovery-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3>Patient Education</h3>
+                    <p>Comprehensive resources and guidance to help patients understand their condition and participate in their recovery.</p>
+                    <a href="#" class="btn btn-outline">Access Resources</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === PREVENTION SECTION === -->
+    <section class="prevention-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Injury Prevention & Wellness</h2>
+                <p>Proactive approaches to maintain musculoskeletal health and prevent injuries</p>
+            </div>
+            
+            <div class="prevention-grid">
+                <div class="prevention-card fade-in">
+                    <div class="prevention-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3>Sports Safety</h3>
+                    <p>Guidance on proper technique, equipment, and training methods to prevent athletic injuries.</p>
+                </div>
+                
+                <div class="prevention-card fade-in">
+                    <div class="prevention-icon">
+                        <i class="fas fa-bone"></i>
+                    </div>
+                    <h3>Bone Health</h3>
+                    <p>Comprehensive evaluation and management of osteoporosis and other metabolic bone diseases.</p>
+                </div>
+                
+                <div class="prevention-card fade-in">
+                    <div class="prevention-icon">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+                    <h3>Workplace Ergonomics</h3>
+                    <p>Assessment and recommendations to prevent repetitive strain injuries and improve workplace safety.</p>
+                </div>
+                
+                <div class="prevention-card fade-in">
+                    <div class="prevention-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <h3>Nutrition & Exercise</h3>
+                    <p>Guidance on diet and physical activity to support musculoskeletal health throughout life.</p>
+                </div>
+            </div>
+            
+            <a href="contact.html" class="btn" style="background-color: var(--accent);">Request Prevention Consultation</a>
+        </div>
+    </section>
+
+    <!-- === FOOTER === -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Redstone Health Center</h3>
+                    <p>Compassionate Care, Modern Excellence. We are committed to providing high-quality healthcare services to our community.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="doctors.html">Our Doctors</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                         <li><a href="CARDIAC.html">Cardiology</a></li>
+                        <li><a href="NEUROLOGY.html">Neurology</a></li>
+                        <li><a href="PEDIATRICS.html">Pediatrics</a></li>
+                        <li><a href="ORTHOPEDICS.html">Orthopedics</a></li>
+                        <li><a href="DENTISTRY.html">Dentistry</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Healthcare Ave, Medical District, City 12345</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>(011) 123-4567</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>orthopedics@redstonehealth.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon - Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 2:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Redstone Health Center. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // === NAVIGATION SCROLL EFFECT ===
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // === MOBILE MENU TOGGLE ===
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('nav ul');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            // Change icon
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // === DARK/LIGHT MODE TOGGLE ===
+        const themeToggle = document.getElementById('themeToggle');
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            // Change icon based on mode
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggle.classList.remove('fa-moon');
+                themeToggle.classList.add('fa-sun');
+            } else {
+                themeToggle.classList.remove('fa-sun');
+                themeToggle.classList.add('fa-moon');
+            }
+        });
+
+        // Add dark mode styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .dark-mode {
+                background-color: #1a1a1a;
+                color: #e0e0e0;
+            }
+                   .dark-mode nav ul li a {
+            color: #ffffff;
+        }
+            
+            .dark-mode nav {
+                background-color: rgba(30, 30, 30, 0.95);
+            }
+            
+            .dark-mode .ortho-about,
+            .dark-mode .technology-section {
+                background-color: #1a2a1a;
+            }
+            
+            .dark-mode .conditions-section,
+            .dark-mode .ortho-doctors,
+            .dark-mode .recovery-section,
+            .dark-mode .ortho-services {
+                background-color: #2d2d2d;
+            }
+            
+            .dark-mode .service-card,
+            .dark-mode .doctor-card,
+            .dark-mode .condition-card,
+            .dark-mode .recovery-card {
+                background-color: #3d3d3d;
+                color: #e0e0e0;
+            }
+            
+            .dark-mode .section-title p,
+            .dark-mode .service-card p,
+            .dark-mode .ortho-text p,
+            .dark-mode .doctor-info p,
+            .dark-mode .condition-card p,
+            .dark-mode .recovery-card p {
+                color: #b0b0b0;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // === SCROLL ANIMATIONS ===
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        function checkFade() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkFade);
+        window.addEventListener('load', checkFade);
+
+        
+    </script>
+</body>
+</html>
